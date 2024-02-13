@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form>
+        <label for="height">Enter your height in meter</label><br>
+        <input type="text" placeholder="Enter your height" id="height"><br>
+        <label for="weight">Enter your weight in kilograms</label><br>
+        <input type="weight" placeholder="Enter your weight" id="weight"><br>
+        <input type="submit" placeholder="Submit" id="submit"><br>
+    </form>
+
+    <h2></h2>
+    
+
+</body>
+</html>
+
+<script>
+
+    document.querySelector("form").addEventListener("submit", function(){
+        event.preventDefault()
+        calculateBmi()
+    })
+
+    function calculateBmi(){
+
+        let result = document.querySelector("h2")
+        let height = document.querySelector("#height").value
+        let weight = document.querySelector("#weight").value
+        let status;
+        // console.log(height.value, weight.value)
+
+        let bmi = (weight / (height * height)).toFixed(2)
+        
+        if(bmi >= 30){
+            status = "Obese"
+        }
+        else if(bmi >=25 && bmi <= 29.9){
+            status = "Overweight"
+        }
+        else if(bmi >= 18.5 && bmi <= 24.9){
+            status = "Normal Weight"
+        }
+        else{
+            status = "UnderWeight"
+        }
+
+        result.append(`Your BMI is ${bmi} which means you are ${status}`)
+
+    }
+
+</script>
